@@ -15,8 +15,11 @@ pixels = image.load()
 
 for i in range(IM_WIDTH):
  for j in range(IM_HEIGHT):
-  val = fbm(noise, i / SCALE, j / SCALE) 
-  normal_val = val * 255
+  # val = fbm(noise, i / SCALE, j / SCALE) 
+  # normal_val = val * 255
+  val = noise.get_value(i / SCALE, j / SCALE)
+  normal_val = ((val / 2) + .5) * 255
+
   pixels[i, j] = (int(normal_val), int(normal_val), int(normal_val))
 
 image.show()
