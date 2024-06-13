@@ -14,9 +14,9 @@ image = Image.new("RGB", (IM_WIDTH, IM_HEIGHT))
 pixels = image.load()
 
 for i in range(IM_WIDTH):
- for j in range(IM_HEIGHT):
-  val = fbm(noise, i / SCALE, j / SCALE) 
-  normal_val = val * 255
-  pixels[i, j] = (int(normal_val), int(normal_val), int(normal_val))
+  for j in range(IM_HEIGHT):
+    val = noise.get_value(i / SCALE, j / SCALE)
+    normal_val = ((val / 2) + .5) * 255
+    pixels[i, j] = (int(normal_val), int(0), int(0))
 
 image.show()

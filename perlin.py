@@ -6,19 +6,18 @@ GRID_SIZE = 256
 
 class Perlin:
  def __init__(self):
-  self.__perms = [i for i in range(GRID_SIZE)]
-  random.shuffle(self.__perms)
-  
-  for i in range(GRID_SIZE):
-   self.__perms.append(self.__perms[i])
-  
   self.__grads = []
   for i in range(GRID_SIZE):
-    val = random.random() * math.pi * 2
-    self.__grads.append(Vector2(math.sin(val), math.cos(val)))
+    tmp = []
+    for j in range(GRID_SIZE):
+      val = random.random() * math.pi * 2
+      tmp.append(Vector2(math.sin(val), math.cos(math.sin(val))))
+    self.__grads.append(tmp)
+
   
  def __get_gradient(self, x, y):
-  return self.__grads[self.__perms[self.__perms[x % GRID_SIZE] + y % GRID_SIZE] % GRID_SIZE]
+  print(x, y)
+  return self.__grads[x][y]
 
  def get_value(self, x, y):
   ix, iy = math.floor(x), math.floor(y)
