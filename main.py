@@ -13,7 +13,25 @@ image = Image.new("RGB", (IM_WIDTH, IM_HEIGHT))
 
 pixels = image.load()
 
+colors = [
+	(0, 0, 128),
+	(0, 0, 255), 
+	(144, 238, 144),
+	(34, 139, 34),
+	(0, 100, 0),
+	(85, 107, 47),  
+	(107, 142, 35), 
+	(160, 82, 45),  
+	(139, 69, 19),
+	(101, 67, 33),
+	(169, 169, 169),
+	(105, 105, 105),
+	(255, 255, 255),
+	(224, 255, 255) 
+]
+
 for i in range(IM_WIDTH):
+<<<<<<< HEAD
  for j in range(IM_HEIGHT):
   # val = fbm(noise, i / SCALE, j / SCALE) 
   # normal_val = val * 255
@@ -21,5 +39,11 @@ for i in range(IM_WIDTH):
   normal_val = ((val / 2) + .5) * 255
 
   pixels[i, j] = (int(normal_val), int(normal_val), int(normal_val))
+=======
+  for j in range(IM_HEIGHT):  
+    val = fbm(noise, i / SCALE, j / SCALE)
+    val = (val / 2 + 0.5)
+    pixels[i, j] = colors[int(val * len(colors))]
+>>>>>>> b60081a8c80dbbdee7fa8b16adf1cee47be751c4
 
 image.show()
