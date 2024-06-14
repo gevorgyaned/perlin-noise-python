@@ -1,15 +1,10 @@
-from perlin import Perlin
+import perlin
 from vector import Vector2
 from PIL import Image
 from utility import fbm
 
-IM_WIDTH = 360
-IM_HEIGHT = 360 
-
-SCALE = 40 
-
-noise = Perlin()
-image = Image.new("RGB", (IM_WIDTH, IM_HEIGHT))
+noise = perlin.Perlin()
+image = Image.new("RGB", (perlin.IM_WIDTH, perlin.IM_HEIGHT))
 
 pixels = image.load()
 
@@ -30,20 +25,10 @@ colors = [
 	(224, 255, 255) 
 ]
 
-for i in range(IM_WIDTH):
-<<<<<<< HEAD
- for j in range(IM_HEIGHT):
-  # val = fbm(noise, i / SCALE, j / SCALE) 
-  # normal_val = val * 255
-  val = noise.get_value(i / SCALE, j / SCALE)
-  normal_val = ((val / 2) + .5) * 255
-
-  pixels[i, j] = (int(normal_val), int(normal_val), int(normal_val))
-=======
-  for j in range(IM_HEIGHT):  
-    val = fbm(noise, i / SCALE, j / SCALE)
+for i in range(perlin.IM_WIDTH):
+  for j in range(perlin.IM_HEIGHT):  
+    val = fbm(noise, i / perlin.SCALE, j / perlin.SCALE)
     val = (val / 2 + 0.5)
     pixels[i, j] = colors[int(val * len(colors))]
->>>>>>> b60081a8c80dbbdee7fa8b16adf1cee47be751c4
 
 image.show()

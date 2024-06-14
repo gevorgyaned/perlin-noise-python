@@ -1,11 +1,11 @@
-import vector
+from vector import Vector2
 import math
 
-def lerp(t):
- return t * t * t * (t * (t * 6.0 - 15.0) + 10.0)
+def fade(t):
+  return t * t * t * (t * (t * 6.0 - 15.0) + 10.0)
 
 def linear(t, a, b):
- return a + t * (b - a)
+  return a + t * (b - a)
 
 def fbm(noise, x, y):
   value = 0
@@ -19,3 +19,6 @@ def fbm(noise, x, y):
 
   return value
 
+def pseudo_rand(vec):
+  x = math.sin(vec.dot(Vector2(12.9898, 78.233)) * 43758.5453)
+  return Vector2(math.sin(x), math.cos(x))
